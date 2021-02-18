@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+ <div id="sam">
+     <div>
+     <p>11.5</p>
+     <p>20</p>
+     <p>30</p>
+     <p>15</p>
+    </div>
+    <div>
+     <span><a>-</a><input type="button" value="0"/><a>+</a></span>
+     <span><a>-</a><input type="button" value="0"/><a>+</a></span>
+     <span><a>-</a><input type="button" value="0"/><a>+</a></span>
+     <span><a>-</a><input type="button" value="0"/><a>+</a></span>
+    </div>
+ </div> 
+</body>
+
+</html>
+<script>
+    var sum=0;  
+    var boo=[];
+  $("p").each(function (i,dom) {
+   boo.push($(dom).text()) ;  
+  })  
+$(function() {
+   
+ 
+  
+$("span").each(function (i,dom) {
+ $(dom).children("a:first-child").click(function() {
+ 
+ var n=$(this).parent("span").index();
+ var t= $(this).next("input").val();
+ t--;
+ if(t<0)
+ {
+     t=0;
+ }
+ daa(n,t);
+ 
+ 
+ $(this).next("input").val(t);
+ 
+ }).siblings("a:last-child").click(function () {
+   
+     var n=$(this).parent("span").index();
+     var t= $(this).prev("input").val();
+    t++;
+    
+  
+ daa(n,t);
+   
+ $(this).prev("input").val(t);
+ })
+})
+ 
+})
+function daa(a,r) {
+   
+    var m=r*boo[a];
+    console.log(m);
+}
+
+</script>

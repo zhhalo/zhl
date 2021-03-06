@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="bootstrap.css" type="text/css" rel="stylesheet">
+    <style>
+        .tab{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="pagination">
+       <san ></san>
+        <sab :snn="snn" ></sab>
+        <sat></sat>
+    </ul>
+    <template id="tem">
+        <li><a href="#" :class="th==1?'tab':''">{{pr}}</a></li>
+    </template>
+    <template id="sab">
+        <li><a href="#" v-for="(item,index) in st" @click="shh(item)">{{item}}</a></li>
+    </template>
+    <template id="sat">
+        <li><a href="#" :class="th==15?'tab':''">{{pr}}</a></li>
+    </template>
+  
+</body>
+<script>
+    var ta=new Vue();
+    var vm=new Vue({
+    el:".pagination",
+    data:{
+    snn:[]
+    },
+    mounted:function(){
+     for(var i=1;i<16;i++) 
+     {
+      this.snn.push(i);   
+     }  
+    },
+
+    components:{
+    "san":{
+        template:"#tem",
+        data:function(){
+         return{
+          pr:"上一页" ,
+          th:""  
+         }   
+        },
+        mounted:function(){
+            ta.$on("dnm",(val)=>{
+             this.th=val
+            });
+          
+        }
+    },
+    "sat":{
+        template:"#sat",
+        data:function(){
+         return{
+          pr:"下一页",
+          th:""   
+         }   
+        } ,
+        mounted:function(){
+            ta.$on("dnm",(val)=>{
+             this.th=val
+            });
+          
+        } 
+    },
+    "sab":{
+        props:['snn'],
+        template:"#sab",
+        data:function(){
+         return{
+            st:this.snn
+         } 
+      
+        },
+        methods:{
+          shh:function(t){
+           ta.$emit("dnm",t);   
+          }  
+        }
+      
+    }
+
+    }    
+    })
+</script>
+</html>

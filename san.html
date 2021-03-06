@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        table{
+            border: 1px darkblue solid;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px blue solid;
+            text-align: center;
+            width: 100px;
+        }
+        #cam{
+           background-color: darkgreen;
+           opacity: 80%;
+            
+        }
+    </style>
+</head>
+<body>
+ <div id="sam">
+<p>搜索:<input type="text" v-model="saa" @focus="sam"/></p>
+<table>
+    <tr id="cam">
+   <td v-for="(item,index) in daa">{{item}}</td>
+    </tr>
+    <tr v-for="(item,index) in dan ">
+    <td>{{item.name}}</td>
+    <td>{{item.gender}}</td>
+    <td>{{item.age}}</td>
+   
+    </tr>
+</table>
+ </div>  
+</body>
+<script>
+ var vm=new Vue({
+ el:"#sam",
+ data:{
+  saa:"",   
+ daa:["name","gender","age"],
+ srr:[
+  {
+  name:"rick",
+  gender:"male",
+  age:21 
+  },
+  {
+    name:"demen",
+  gender:"male",
+  age:26 
+  },
+  
+  {
+    name:"Jack",
+  gender:"male",
+  age:20 
+  },
+  {
+    name:"John",
+  gender:"female",
+  age:21 
+},{
+    name:"Lucy",
+  gender:"female",
+  age:16
+  }
+   
+  
+ ]},
+ methods:{
+ sam:function(){
+ this.saa="";    
+ }    
+ },
+ computed:{
+    dan:function(){
+  return this.srr.filter(item=>{
+      return item.name.substr(0,1).toLowerCase().indexOf(this.saa.substr(0,1).toLowerCase())==0;
+  });
+ 
+ }
+ },
+ 
+
+ });  
+</script>
+</html>

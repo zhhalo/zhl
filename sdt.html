@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="sam">{{taa}}<sam :sab="san" @cxx="dam"></sam></div>
+ </body>   
+  <script>
+Vue.component("sam",{
+ props:['sab'],   
+data:function() {
+return{
+    num:0,
+    daa:this.sab
+    }
+},
+methods:{
+tom:function(t){
+   
+    this.$emit("cxx",t);
+}
+},
+template:'<div><button v-for="(item,key) in daa" @click="tom(key)">{{item}}</button></div>'    
+})
+var vm=new Vue({
+ el:"#sam",
+ data:{
+  san:["增加1","减少1"],
+  taa:0   
+ },
+ methods:{
+     dam:function(val){
+if(val==0){
+ this.taa++   
+}
+else {
+    this.taa--
+}
+     }
+ }   
+})
+</script>
+</html>
